@@ -10,6 +10,8 @@ authController.register = async (data) => {
   return new UserModel({
     email: data.email,
     password: data.password,
+    firstName: data.firstName,
+    secondName: data.secondName
   }).save();
 };
 

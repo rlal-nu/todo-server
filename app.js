@@ -5,13 +5,15 @@ import authRoutes from "./routes/auth";
 import taskRoutes from "./routes/task";
 import mongoose from "mongoose";
 import errorHandler from "./utils/errorHandler";
+import cors from "cors";
 
 const app = express();
 const port = process.env.APP_PORT;
+app.use(cors());
 app.use(express.json());
 app.use("/todo", todoRoutes);
 app.use("/auth", authRoutes);
-app.use('/task', taskRoutes)
+app.use("/task", taskRoutes);
 app.use(errorHandler);
 app.listen(port, async (error) => {
   if (error) {
