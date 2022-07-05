@@ -12,7 +12,7 @@ if (process.env.APP_ENV != "dev") {
 }
 
 const app = express();
-const port = process.env.APP_PORT;
+const port = process.env.PORT;
 app.use(cors());
 app.use(express.json());
 app.use("/todo", todoRoutes);
