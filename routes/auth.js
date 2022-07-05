@@ -27,7 +27,6 @@ router.post("/login", [loginValidator], async (req,res,next)=>{
   }
   try{
     const data = await authController.login(req.body);
-    console.log(data);
     res.json(data).status(200);
   }catch(e){
     next(e);
