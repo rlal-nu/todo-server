@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import todoRoutes from "./routes/todo";
 import authRoutes from "./routes/auth";
+import taskRoutes from "./routes/task";
 import mongoose from "mongoose";
 import errorHandler from "./utils/errorHandler";
 
@@ -10,6 +11,7 @@ const port = process.env.APP_PORT;
 app.use(express.json());
 app.use("/todo", todoRoutes);
 app.use("/auth", authRoutes);
+app.use('/task', taskRoutes)
 app.use(errorHandler);
 app.listen(port, async (error) => {
   if (error) {
