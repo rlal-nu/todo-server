@@ -9,13 +9,13 @@ router.post("/register", [registerValidator], async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     errors.statusCode = 400;
-    next(errors);
+    return next(errors);
   }
   try {
     const userDetails = await authController.register(req.body);
-    res.json(userDetails).status(201);
+    return res.json(userDetails).status(201);
   } catch (e) {
-    next(e);
+    return next(e);
   }
 });
 
@@ -23,13 +23,13 @@ router.post("/login", [loginValidator], async (req,res,next)=>{
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     errors.statusCode = 400;
-    next(errors);
+    return next(errors);
   }
   try{
     const data = await authController.login(req.body);
-    res.json(data).status(200);
+    return res.json(data).status(200);
   }catch(e){
-    next(e);
+    return next(e);
   }
 })
 

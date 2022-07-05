@@ -20,7 +20,7 @@ authController.login = async (data) => {
     email: data.email,
   });
   if (!userData) {
-    throw new Error("User not found");
+    throw new ApplicationError("User not found", 404);
   }
   const validationResult = await userData.validatePassword(data.password);
   if (validationResult) {
