@@ -1,11 +1,15 @@
 import express from "express";
-import "dotenv/config";
 import todoRoutes from "./routes/todo";
 import authRoutes from "./routes/auth";
 import taskRoutes from "./routes/task";
 import mongoose from "mongoose";
 import errorHandler from "./utils/errorHandler";
 import cors from "cors";
+import dotenv from "dotenv";
+
+if (process.env.APP_ENV != "dev") {
+  dotenv.config();
+}
 
 const app = express();
 const port = process.env.APP_PORT;
